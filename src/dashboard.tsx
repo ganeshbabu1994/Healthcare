@@ -8,26 +8,28 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+//sample data
+const rows = [
+    createData('Rakesh', "morning","Doctor", "Edit     Add"),
+    createData('Suresh', "night","Patient", "Edit      Add"),
+    createData('Nagesh', "noon","Nurse", "Edit     Add"),
+    createData('Ganesh', "morning","Doctor", "Edit     Add"),
+    createData('Aug', "noon","Patient", "Edit     Add"),
+  ];
 
 function createData(Firstname: string, Shift: string, role: string, action: string) {
   return { Firstname, Shift, role, action };
 }
 
 //From Database 
-const rows = [
-  createData('Rakesh', "morning","Doctor", "Edit     Add"),
-  createData('Suresh', "night","Patient", "Edit      Add"),
-  createData('Nagesh', "noon","Nurse", "Edit     Add"),
-  createData('Ganesh', "morning","Doctor", "Edit     Add"),
-  createData('Aug', "noon","Patient", "Edit     Add"),
-];
+
 
 export default function Dashboard() {
 
   React.useEffect(() => {
     const fetchApi = async () => {
       try {
-           fetch('/db/data_fetch')
+           fetch('${apiKey}/db/data_fetch')
               .then((response) => response.json())
               .then((data) => {
                  console.log(data);
@@ -44,9 +46,17 @@ export default function Dashboard() {
     fetchApi();
   }, []);
 
+  const handleRequestSort = (event:any, property:any) => {
+   sort(property)
+  };
+
+  const createSortHandler = (property:any) => (event:any) => {
+   sort(property)
+  };
+
   return (
     <TableContainer component={Paper}>
-      <h2 style={{ "textAlign": "center" }}>Shift Tracking System</h2>
+      <h2 style={{ "textAlign": "center" }}>Shift Tracking System <input style={{"marginLeft":"90px"}}placeholder='search key'></input></h2>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>          
         <TableRow>
@@ -62,7 +72,8 @@ export default function Dashboard() {
               key={row.Firstname                }
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th">{row.Firstname}</TableCell>
+              <TableCell component="th">{row.Firstname}
+              </TableCell>
               <TableCell component="th" scope="row">
                 {row.Shift}
               </TableCell>
@@ -74,4 +85,8 @@ export default function Dashboard() {
       </Table>
     </TableContainer>
   );
+}
+
+function sort(property: any) {
+    throw new Error('Function not implemented.');
 }
