@@ -3,7 +3,7 @@ const app = express()
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
-
+const scheduler = require("../src/schedule");
 const port = process.env.PORT || 3000;
 
 const express = require('express');
@@ -16,6 +16,9 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+
+//scheduler
+scheduler.scheduleJob();
 
 // Swagger setup
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

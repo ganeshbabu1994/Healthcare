@@ -50,8 +50,24 @@ export default function Dashboard() {
    sort(property)
   };
 
+  const elasticSearchField=()=>{
+    // performQuery = debounce(queryString => {
+    //     client.search(queryString, {}).then(
+    //       response => {
+    //         this.setState({
+    //           response
+    //         });
+    //       },
+    //       error => {
+    //         console.log(`error: ${error}`);
+    //       }
+    //     );
+    //   }, 200); 
+  }
+
   const elasticSearch = (event:any) =>{
-  setSearchKey:event.target.value
+  setSearchKey(event.target.value)
+  elasticSearchField()
   }
 
   const createSortHandler = (property:any) => (event:any) => {
