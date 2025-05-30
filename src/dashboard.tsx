@@ -10,11 +10,11 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 //sample data
 const rows = [
-    createData('Rakesh', "morning","Doctor", "Edit    Add"),
-    createData('Suresh', "night","Patient", "Edit      Add"),
-    createData('Nagesh', "noon","Nurse", "Edit     Add"),
-    createData('Ganesh', "morning","Doctor", "Edit     Add"),
-    createData('Aug', "noon","Patient", "Edit     Add"),
+    createData('Rakesh', "morning","Doctor", "Edit Shift    Delete Shift"),
+    createData('Suresh', "night","Patient", "Edit Shift      Delete Shift "),
+    createData('Nagesh', "noon","Nurse", "Edit Shift    Delete Shift"),
+    createData('Ganesh', "morning","Doctor", "Edit Shift    Delete Shift"),
+    createData('Aug', "noon","Patient", "Edit Shift     Delete Shift"),
   ];
 
 function createData(Firstname: string, Shift: string, role: string, action: string) {
@@ -75,9 +75,13 @@ export default function Dashboard() {
    sort(property)
   };
 
+    const addStaff = (event:any)=> {
+       //Add staff object
+    }
+
   return (
     <TableContainer component={Paper}>
-      <h2 style={{ "textAlign": "center" }}>Shift Tracking System <input style={{"marginLeft":"90px"}}placeholder='search key' onChange={elasticSearch}></input></h2>
+      <h2 style={{ "textAlign": "center" }}>Shift Tracking System <input style={{"marginLeft":"90px"}}placeholder='search key' onChange={elasticSearch}></input><button style={{"marginLeft":"90px", "color":"green"}} onChange={elasticSearch} onClick={addStaff}>Add Staff</button></h2>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>          
         <TableRow>
