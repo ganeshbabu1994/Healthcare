@@ -25,7 +25,7 @@ function createData(Firstname: string, Shift: string, role: string, action: stri
 
 
 export default function Dashboard() {
-
+  const [searchKey,setSearchKey]= React.useState();
   React.useEffect(() => {
     const fetchApi = async () => {
       try {
@@ -50,13 +50,17 @@ export default function Dashboard() {
    sort(property)
   };
 
+  const elasticSearch = (event:any) =>{
+  setSearchKey:event.target.value
+  }
+
   const createSortHandler = (property:any) => (event:any) => {
    sort(property)
   };
 
   return (
     <TableContainer component={Paper}>
-      <h2 style={{ "textAlign": "center" }}>Shift Tracking System <input style={{"marginLeft":"90px"}}placeholder='search key'></input></h2>
+      <h2 style={{ "textAlign": "center" }}>Shift Tracking System <input style={{"marginLeft":"90px"}}placeholder='search key' onChange={elasticSearch}></input></h2>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>          
         <TableRow>
