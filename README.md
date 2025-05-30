@@ -1,3 +1,6 @@
-# Healthcare
-Install dependencies npm install
+# HCL
+!--build--!
+npm install  
+
+!--Run Application --!
 npm start
