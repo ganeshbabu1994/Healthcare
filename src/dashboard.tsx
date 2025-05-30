@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 //sample data
 const rows = [
-    createData('Rakesh', "morning","Doctor", "Edit     Add"),
+    createData('Rakesh', "morning","Doctor", "Edit    Add"),
     createData('Suresh', "night","Patient", "Edit      Add"),
     createData('Nagesh', "noon","Nurse", "Edit     Add"),
     createData('Ganesh', "morning","Doctor", "Edit     Add"),
@@ -29,6 +29,7 @@ export default function Dashboard() {
   React.useEffect(() => {
     const fetchApi = async () => {
       try {
+        // response from controller file which connects to api's and process data
            fetch('${apiKey}/db/data_fetch')
               .then((response) => response.json())
               .then((data) => {

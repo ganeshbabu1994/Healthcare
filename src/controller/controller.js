@@ -15,7 +15,7 @@ const PostController = () => {
         api.getMethod(function (key, value, res, callback) {
             // controller to interconnect client base url and backend api's 
             console.log("Post controller")
-            res.send({ json: res })
+            res.send({ response: res.json() })
         })
     }
 }
@@ -25,7 +25,7 @@ const GetDepartmentList = () => {
         api.getMethod(function (key, value, res, callback) {
             // controller to interconnect client base url and backend api's 
             console.log("Department controller")
-            res.send({ json: res })
+            res.send({ response: res.json() })
         })
     }
 }
